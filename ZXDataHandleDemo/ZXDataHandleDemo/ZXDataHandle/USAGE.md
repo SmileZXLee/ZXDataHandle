@@ -12,7 +12,6 @@ c.有东西要转Json字符串，调用这个东西的-zx_toJsonStr方法即可�
 1. 字典、字典数组或Json字符串 -> 模型：  
 ```
 [Class zx_modelWithObj:obj];
-
 ```
 例：[Bird zx_modelWithObj:dic];  
 注：Class为目标模型类，obj可以是单一字典、字典数组或Json字符串。  
@@ -20,7 +19,6 @@ c.有东西要转Json字符串，调用这个东西的-zx_toJsonStr方法即可�
 2. 模型、模型数组或Json字符串 -> 字典
 ```
 [obj zx_toDic];
-
 ```
 例：[bird zx_toDic];
 注：obj可以是单一模型、模型数组或Json字符串
@@ -28,7 +26,6 @@ c.有东西要转Json字符串，调用这个东西的-zx_toJsonStr方法即可�
 3. 字典、字典数组、模型或模型数组 -> Json 字符串
 ```
 [obj zx_toJsonStr];
-
 ```
 例：[bird zx_toJsonStr];
 注：obj可以是字典，字典数组，模型或模型数组
@@ -39,7 +36,6 @@ c.有东西要转Json字符串，调用这个东西的-zx_toJsonStr方法即可�
 +(NSDictionary *)zx_replaceProName{
     return @{@"uid" : @"id"};
 }
-
 ```
 注：模型中的uid属性将会被字典中key：id对应的value赋值
 
@@ -48,7 +44,6 @@ c.有东西要转Json字符串，调用这个东西的-zx_toJsonStr方法即可�
 +(NSString *)zx_replaceProName121:(NSString *)proName{
     return [proName strToUnderLine];
 }
-
 ```
 注1：模型中处理前的属性为proName，若返回的字符串长度大于0，则使用返回的字符串，示例代码中的操作会将当前对象中所有属性名由驼峰形式转为下划线的形式。
 
@@ -60,7 +55,6 @@ c.有东西要转Json字符串，调用这个东西的-zx_toJsonStr方法即可�
 +(NSDictionary *)zx_inArrModelName{
     return @{@"boysArray" : @"Boy"};
 }
-
 ```
 
 ## 数据存储-ZXDataStore
@@ -71,13 +65,11 @@ c.有东西要转Json字符串，调用这个东西的-zx_toJsonStr方法即可�
 //存储用户偏好数据
 //注意 如果saveObj的对象为自定义对象，则ZXDataStoreCache会将其转为字典再存储
 [ZXDataStoreCache saveObj:@"123" forKey:@"pwd"];
-
 ```
 
 ```
 //读取用户偏好数据
 id data = [ZXDataStoreCache readObjForKey:@"123"];
-
 ```
 * 数据归档与读档（可以直接对自定义类进行操作）
 注:归档读档的类需要继承ZXClassArchived，即可直接进行归档读档操作
@@ -90,7 +82,6 @@ apple.name = @"嘻哈苹果";
 apple.dec = @"很好吃吧234";
 apple.soldMoney = 1001;
 [ZXDataStoreCache arcObj:apple pathComponent:@"apple"];
-
 ```
 ```
 //数据读档，将数据从当前沙盒document/apple目录下读取出来
@@ -99,7 +90,6 @@ apple.name = @"嘻哈苹果";
 apple.dec = @"很好吃吧234";
 apple.soldMoney = 1001;
 id data = [ZXDataStoreCache unArcObjPathComponent:@"apple"];
-
 ```
 
 2. Sqlite3数据库操作  
@@ -117,7 +107,6 @@ apple.soldMoney = 100;
 //保存
 BOOL res = [apple zx_dbSave];
 NSLog("操作结果-%i",res);
-
 ```
 注：您只需创建一个需要存储的对象，调用其-zx_dbSave方法即可，ZXDataStore会自动为当前项目创建一个数据库，并根据对象的属性创建同名的表，同时将数据插入到表中。
 
@@ -137,7 +126,6 @@ for (NSUInteger i = 0; i < 10; i++) {
 //保存
 BOOL res = [appleArr zx_dbSave];
 NSLog("操作结果-%i",res);
-
 ```
 注：调用对象数组的-zx_dbSave即可批量存储数据，ZXDataStore进行了数据库事务优化，加快存储速度。
 
@@ -149,7 +137,6 @@ NSLog("操作结果-%i",res);
 
 BOOL res = [Apple zx_dbDropWhere:@{@"soldMoney":@"100"}];
 NSLog("操作结果-%i",res);
-
 ```
 或
 
@@ -158,7 +145,6 @@ NSLog("操作结果-%i",res);
 
 BOOL res = [Apple zx_dbDropWhere:@"id=100"];
 NSLog("操作结果-%i",res);
-
 ```
 或
 
@@ -167,7 +153,6 @@ NSLog("操作结果-%i",res);
 
 BOOL res = [Apple zx_dbDropWhereArg:@"id=",@"100"];
 NSLog("操作结果-%i",res);
-
 ```
 * 修改（更新）数据
 
@@ -181,7 +166,6 @@ apple.soldMoney = 10;
 //将Apple表中name等于“嘻哈苹果”的数据的name值改为“坏掉的苹果”，dec改为“不好吃哦”，soldMoney改为10
 BOOL res = [apple zx_dbUpdateWhere:@"name='嘻哈苹果'"];
 NSLog("操作结果-%i",res);
-
 ```
 * 查询数据
 
@@ -191,7 +175,6 @@ NSArray *resArr = [Apple zx_dbQuaryWhere:@"soldMoney >= 100"];
 
 //resArr即为查询结果数组，resArr中是Apple对象
 NSLog(@"resArr--%@",resArr);
-
 ```
 * Sqlite3数据库操作进阶及注意事项
 
