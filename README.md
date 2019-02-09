@@ -1,11 +1,12 @@
 #  ZXDataHandle使用方法
+GitHub:https://github.com/SmileZXLee/ZXDataHandle
 ## 数据转换-ZXDataConvert
 注：浮点数精度问题内部已自动处理
 
 概要：使用方法三句话就可以概括：  
 a.有东西要转模型，调用模型类的+zx_modelWithObj:方法，并把这个东西传给它即可。    
-b.有东西要转字典，调用这个东西的-zx_toDic方法即可。  
-c.有东西要转Json字符串，调用这个东西的-zx_toJsonStr方法即可。  
+b.有东西要转字典，调用它的-zx_toDic方法即可。  
+c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。  
 
 下面是详细的例子：  
 
@@ -198,10 +199,10 @@ BOOL res = [Apple zx_dbUpdateDic:updateDic whereArg:@"soldMoney=",updateSoldMone
 NSLog(@"结果--%i",res);
 ```
 注：通过自定义对象更新数据有一些弊端，此次需要说明：  
-a.加入您需要通过自定义对象把表中的例如soldMoney置为0是无法做到的，因为ZXSQliteHandle无法获知soldMoney=0是对象本身初始化时候就为0还是您设置成0的，当然有很多方法可以添加设置，但是考虑到简便性和易用性还是统一将对象中数值类型的0不纳入update范围。  
+a.假如您需要通过自定义对象把表中的例如soldMoney置为0是无法做到的，因为ZXSQliteHandle无法获知soldMoney=0是对象本身初始化时候就为0还是您设置成0的，当然有很多方法可以添加设置，但是考虑到操作简便性和易用性统一规定对象中数值类型的0不纳入update范围。  
 b.您无法进行对应字段自增自减，字段赋值等操作。 
 
-_通过字典来更新数据可以解决这些弊端，依据您的具体需求和习惯而定。 _
+通过字典来更新数据可以解决这些弊端，依据您的具体需求和习惯而定，下面是一些例子： 
 
 ```
 //将soldMoney的值在原本基础上加66
@@ -225,6 +226,8 @@ Sqlite3操作仅允许对表进行更改表名，增加列的操作，我们可�
 
 Ⅳ.其他
 ZXSQliteHandle默认为您当前项目创建一个您当前项目的BundleId.sqlite的数据库，数据库中的表名与对应对象一一对应，主键名为id且自增，您无需关心数据库如何创建，表如何设计，SQL语句如何写，但是如此也必然有弊端，ZXSQliteHandle可以满足绝大部分需求，但诸如外键，多表关联等等不常用的功能需要您额外处理。考虑到易用性等方面，ZXSQliteHandle仅提供核心的数据库处理，还望谅解。
+
+### 任何问题欢迎随时issue我
 
 
 
