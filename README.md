@@ -11,21 +11,21 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 下面是详细的例子：  
 
 1. 字典、字典数组或Json字符串 -> 模型：  
-```
+```objective-c
 [Class zx_modelWithObj:obj];
 ```
 例：[Bird zx_modelWithObj:dic];  
 注：Class为目标模型类，obj可以是单一字典、字典数组或Json字符串。  
 
 2. 模型、模型数组或Json字符串 -> 字典
-```
+```objective-c
 [obj zx_toDic];
 ```
 例：[bird zx_toDic];
 注：obj可以是单一模型、模型数组或Json字符串
 
 3. 字典、字典数组、模型或模型数组 -> Json 字符串
-```
+```objective-c
 [obj zx_toJsonStr];
 ```
 例：[bird zx_toJsonStr];
@@ -33,7 +33,7 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 
 4. 数据转换特殊情况  
 * 属性替换1（指定属性修改）
-```
+```objective-c
 +(NSDictionary *)zx_replaceProName{
 return @{@"uid" : @"id"};
 }
@@ -41,7 +41,7 @@ return @{@"uid" : @"id"};
 注：模型中的uid属性将会被字典中key：id对应的value赋值
 
 * 属性替换2（全部属性修改）
-```
+```objective-c
 +(NSString *)zx_replaceProName121:(NSString *)proName{
 return [proName strToUnderLine];
 }
@@ -52,7 +52,7 @@ return [proName strToUnderLine];
 
 
 * 模型中包含数组，需要声明数组中存储的Class  
-```
+```objective-c
 +(NSDictionary *)zx_inArrModelName{
 return @{@"boysArray" : @"Boy"};
 }
@@ -62,13 +62,13 @@ return @{@"boysArray" : @"Boy"};
 1. 文件，数据直接存储
 * 用户偏好存储与读取（无法直接对自定义类进行操作）
 
-```
+```objective-c
 //存储用户偏好数据
 //注意 如果saveObj的对象为自定义对象，则ZXDataStoreCache会将其转为字典再存储
 [ZXDataStoreCache saveObj:@"123" forKey:@"pwd"];
 ```
 
-```
+```objective-c
 //读取用户偏好数据
 id data = [ZXDataStoreCache readObjForKey:@"123"];
 ```
@@ -76,7 +76,7 @@ id data = [ZXDataStoreCache readObjForKey:@"123"];
 注:归档读档的类需要继承ZXClassArchived，即可直接进行归档读档操作
 @interface Apple : ZXClassArchived
 
-```
+```objective-c
 //数据归档，将数据存储至当前沙盒document/apple目录下
 Apple *apple = [[Apple alloc]init];
 apple.name = @"嘻哈苹果";
@@ -84,7 +84,7 @@ apple.dec = @"很好吃吧234";
 apple.soldMoney = 1001;
 [ZXDataStoreCache arcObj:apple pathComponent:@"apple"];
 ```
-```
+```objective-c
 //数据读档，将数据从当前沙盒document/apple目录下读取出来
 Apple *apple = [[Apple alloc]init];
 apple.name = @"嘻哈苹果";
@@ -98,7 +98,7 @@ id data = [ZXDataStoreCache unArcObjPathComponent:@"apple"];
 
 * 存储一条数据
 
-```
+```objective-c
 //创建一个对象
 Apple *apple = [[Apple alloc]init];
 apple.name = @"嘻哈苹果";
@@ -113,7 +113,7 @@ NSLog("操作结果-%i",res);
 
 * 存储多条数据
 
-```
+```objective-c
 //创建一个对象数组
 NSMutableArray *appleArr = [NSMutableArray array];
 for (NSUInteger i = 0; i < 10; i++) {
@@ -133,7 +133,7 @@ NSLog("操作结果-%i",res);
 * 删除一条数据(包含where语句使用示例，以下不再赘述)
 
 *以下操作等同于SQL语句：DELETE FROM Apple WHERE soldMoney = 100*
-```
+```objective-c
 //zx_dbDropWhere:可以传入一个字典，where语句多个键值对之间默认使用AND连接，键值之间使用等号连接，其他情况请使用以下两种
 
 BOOL res = [Apple zx_dbDropWhere:@{@"soldMoney":@"100"}];
@@ -141,7 +141,7 @@ NSLog("操作结果-%i",res);
 ```
 或
 
-```
+```objective-c
 //zx_dbDropWhere:可以传入一段where语句，以及where之后的运算符
 
 BOOL res = [Apple zx_dbDropWhere:@"id=100"];
@@ -149,7 +149,7 @@ NSLog("操作结果-%i",res);
 ```
 或
 
-```
+```objective-c
 //zx_dbDropWhereArg:可以传入多个参数，多个参数拼接成where语句，以及where之后的运算符
 
 BOOL res = [Apple zx_dbDropWhereArg:@"id=",@"100"];
@@ -157,7 +157,7 @@ NSLog("操作结果-%i",res);
 ```
 * 修改（更新）数据
 
-```
+```objective-c
 //创建一个更新之后的对象，若对象属性未赋值，则对应字段不会被修改
 Apple *apple = [[Apple alloc]init];
 apple.name = @"坏掉的苹果";
@@ -170,7 +170,7 @@ NSLog("操作结果-%i",res);
 ```
 * 查询数据
 
-```
+```objective-c
 //查询Apple表中soldMoney大于等于100的所有数据
 NSArray *resArr = [Apple zx_dbQuaryWhere:@"soldMoney >= 100"];
 
@@ -184,7 +184,7 @@ NSLog(@"resArr--%@",resArr);
 Ⅱ.您可以通过对象或字典来更新数据，以下是范例。  
 
 通过自定义对象更新数据
-```
+```objective-c
 NSNumber *updateSoldMoney = @104;
 Apple *updateApp = [[Apple alloc]init];
 updateApp.dec = @"这是通过自定义对象更新的数据测试";
@@ -192,7 +192,7 @@ BOOL res  = [updateApp zx_dbUpdateWhereArg:@"soldMoney=",updateSoldMoney,nil];
 NSLog(@"结果--%i",res);
 ```
 通过字典更新数据
-```
+```objective-c
 NSNumber *updateSoldMoney = @104;
 NSDictionary *updateDic = @{@"dec":@"这是通过字典更新的数据测试",@"soldMoney":@"+=66",@"testAdd":@"测试的后来新增的字段"};
 BOOL res = [Apple zx_dbUpdateDic:updateDic whereArg:@"soldMoney=",updateSoldMoney,nil];
@@ -204,14 +204,14 @@ b.您无法进行对应字段自增自减，字段赋值等操作。
 
 通过字典来更新数据可以解决这些弊端，依据您的具体需求和习惯而定，下面是一些例子： 
 
-```
+```objective-c
 //将soldMoney的值在原本基础上加66
 NSDictionary *updateDic = @{@"soldMoney":@"+=66"};
 //另一种写法
 NSDictionary *updateDic2 = @{@"soldMoney":@"soldMoney+66"};
 ```
 
-```
+```objective-c
 //将dec的值赋值给name
 NSDictionary *updateDic = @{@"name":@"dec"};
 
