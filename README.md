@@ -92,7 +92,7 @@ apple.dec = @"很好吃吧234";
 apple.soldMoney = 1001;
 id data = [ZXDataStoreCache unArcObjPathComponent:@"apple"];
 ```
-
+***
 2. Sqlite3数据库操作  
 注：ZXDataStore采取的是对象映射数据表的操作措施，因此所有操作都是面向对象的，您几乎不用写sql语句直接对数据库进行操作。
 
@@ -177,6 +177,7 @@ NSArray *resArr = [Apple zx_dbQuaryWhere:@"soldMoney >= 100"];
 //resArr即为查询结果数组，resArr中是Apple对象
 NSLog(@"resArr--%@",resArr);
 ```
+***
 * Sqlite3数据库操作进阶及注意事项
 
 Ⅰ.where语句后面可以有多种运算符表示方式，如WHERE NAME LIKE 'ap%'，您可以使用where或whereArg拼接所需参数。  
