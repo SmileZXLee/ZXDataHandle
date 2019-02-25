@@ -10,26 +10,26 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 
 下面是详细的例子：  
 
-1. 字典、字典数组或Json字符串 -> 模型：  
-```objective-c
+1. 字典、字典数组、Json字符串或NSData -> 模型：  
+```
 [Class zx_modelWithObj:obj];
 ```
 例：[Bird zx_modelWithObj:dic];  
-注：Class为目标模型类，obj可以是单一字典、字典数组或Json字符串。  
+注：Class为目标模型类，obj可以是单一字典、字典数组、Json字符串或NSData。  
 
-2. 模型、模型数组或Json字符串 -> 字典
-```objective-c
+2. 模型、模型数组、Json字符串或NSData -> 字典
+```
 [obj zx_toDic];
 ```
 例：[bird zx_toDic];
-注：obj可以是单一模型、模型数组或Json字符串
+注：obj可以是单一模型、模型数组、Json字符串或NSData
 
-3. 字典、字典数组、模型或模型数组 -> Json 字符串
-```objective-c
+3. 字典、字典数组、模型、模型数组或NSData -> Json 字符串
+```
 [obj zx_toJsonStr];
 ```
 例：[bird zx_toJsonStr];
-注：obj可以是字典，字典数组，模型或模型数组
+注：obj可以是字典，字典数组，模型、模型数组或NSData
 
 4. 数据转换特殊情况  
 * 属性替换1（指定属性修改）

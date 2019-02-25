@@ -9,9 +9,13 @@
 #import "NSObject+ZXToJson.h"
 #import "NSDictionary+ZXDataConvert.h"
 #import "NSArray+ZXDataConvert.h"
+#import "NSData+ZXDataConvert.h"
 @implementation NSObject (ZXToJson)
 -(NSString *)zx_toJsonStr{
     NSString *resJsonStr = nil;
+    if([self isKindOfClass:[NSData class]]){
+        return [((NSData *)self) zx_dataToJsonStr];
+    }
     DataType dataType = [ZXDataType zx_dataType:self];
     if(dataType == DataTypeDic){
         resJsonStr = [((NSDictionary *)self) zx_dicToJsonStr];

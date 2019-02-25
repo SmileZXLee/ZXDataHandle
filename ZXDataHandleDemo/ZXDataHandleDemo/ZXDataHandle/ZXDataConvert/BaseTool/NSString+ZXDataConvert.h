@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (ZXDataConvert)
-///json字符串转字典
--(NSDictionary *)zx_toDic;
+///json转字典
+-(id)zx_jsonToDic;
 ///下划线转驼峰
 -(NSString *)strToHump;
 ///驼峰转下划线

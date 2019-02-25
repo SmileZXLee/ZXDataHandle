@@ -42,6 +42,7 @@
 		74A3EFE121F9B35700950BF8 /* ZXDataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3EFE021F9B35700950BF8 /* ZXDataConvert.m */; };
 		74A3EFE421F9B8B500950BF8 /* ZXClassPrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3EFE321F9B8B500950BF8 /* ZXClassPrint.m */; };
 		74A3EFE821FAA08000950BF8 /* NSObject+ZXToDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3EFE721FAA08000950BF8 /* NSObject+ZXToDic.m */; };
+		74D7E9362223E41500D871CA /* NSData+ZXDataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D7E9352223E41500D871CA /* NSData+ZXDataConvert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,8 @@
 		74A3EFE321F9B8B500950BF8 /* ZXClassPrint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXClassPrint.m; sourceTree = "<group>"; };
 		74A3EFE621FAA08000950BF8 /* NSObject+ZXToDic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZXToDic.h"; sourceTree = "<group>"; };
 		74A3EFE721FAA08000950BF8 /* NSObject+ZXToDic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZXToDic.m"; sourceTree = "<group>"; };
+		74D7E9342223E41500D871CA /* NSData+ZXDataConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ZXDataConvert.h"; sourceTree = "<group>"; };
+		74D7E9352223E41500D871CA /* NSData+ZXDataConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ZXDataConvert.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,12 +257,14 @@
 				7454330C21F5C5070032B63B /* NSObject+ZXToModel.m */,
 				74A3EFE621FAA08000950BF8 /* NSObject+ZXToDic.h */,
 				74A3EFE721FAA08000950BF8 /* NSObject+ZXToDic.m */,
+				744C3C8621FEA61D0040408A /* NSObject+ZXToJson.h */,
+				744C3C8721FEA61D0040408A /* NSObject+ZXToJson.m */,
+				74D7E9342223E41500D871CA /* NSData+ZXDataConvert.h */,
+				74D7E9352223E41500D871CA /* NSData+ZXDataConvert.m */,
 				74A3EFCA21F99BAF00950BF8 /* NSDictionary+ZXDataConvert.h */,
 				74A3EFCB21F99BAF00950BF8 /* NSDictionary+ZXDataConvert.m */,
 				74A3EFCD21F99BC000950BF8 /* NSArray+ZXDataConvert.h */,
 				74A3EFCE21F99BC000950BF8 /* NSArray+ZXDataConvert.m */,
-				744C3C8621FEA61D0040408A /* NSObject+ZXToJson.h */,
-				744C3C8721FEA61D0040408A /* NSObject+ZXToJson.m */,
 				74A3EFDF21F9B35700950BF8 /* ZXDataConvert.h */,
 				74A3EFE021F9B35700950BF8 /* ZXDataConvert.m */,
 			);
@@ -471,6 +476,7 @@
 				74A3EFC921F997DC00950BF8 /* NSString+ZXDataConvert.m in Sources */,
 				7454331A21F5CD060032B63B /* ZXDataType.m in Sources */,
 				744C3C9521FEF1050040408A /* ZXClassArchived.m in Sources */,
+				74D7E9362223E41500D871CA /* NSData+ZXDataConvert.m in Sources */,
 				7454331721F5CA440032B63B /* NSDictionary+ZXSafetySet.m in Sources */,
 				744C3C9E21FEFCF80040408A /* NSObject+ZXSQliteHandle.m in Sources */,
 				744C3CA4220023B10040408A /* NSMutableArray+ZXSafetySet.m in Sources */,

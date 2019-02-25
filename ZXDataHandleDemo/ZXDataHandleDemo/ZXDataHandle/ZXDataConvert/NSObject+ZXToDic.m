@@ -11,11 +11,15 @@
 #import "NSObject+ZXGetProperty.h"
 #import "NSObject+ZXSafetySet.h"
 #import "NSObject+ZXDataConvertRule.h"
+#import "NSString+ZXDataConvert.h"
 @implementation NSObject (ZXToDic)
 -(id)zx_toDic{
     DataType dataType = [ZXDataType zx_dataType:self];
     if(dataType == DataTypeDic){
         return self;
+    }
+    if(dataType == DataTypeStr){
+        return [((NSString *)self)zx_jsonToDic];
     }
     if(dataType == DataTypeArr){
         NSArray *objArr = [self mutableCopy];
@@ -31,6 +35,10 @@
     
 }
 -(NSDictionary *)zx_singleObjToDic{
+    if([self isKindOfClass:[NSData class]]){
+        NSString *jsonStr = [self zx_toJsonStr];
+        return [jsonStr zx_toDic];
+    }
     if([ZXDataType isFoudationClass:self]){
         return @{};
     }

@@ -10,7 +10,7 @@
 
 @implementation NSString (ZXDataConvert)
 //json字符串转字典
--(id)zx_toDic{
+-(id)zx_jsonToDic{
     NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
     return [self zx_toDocWithData:jsonData];
 }

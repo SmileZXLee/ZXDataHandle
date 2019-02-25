@@ -118,6 +118,10 @@
 +(id)zx_modelWithObj:(id)obj{
     DataType subDataType = [ZXDataType zx_dataType:obj];
     id resObj = nil;
+    if([self isKindOfClass:[NSData class]]){
+        NSString *jsonStr = [self zx_toJsonStr];
+        return [self zx_modelWithObj:jsonStr];
+    }
     if(subDataType == DataTypeStr){
         NSString *jsonStr = (NSString *)obj;
         id dicObj = [jsonStr zx_toDic];
