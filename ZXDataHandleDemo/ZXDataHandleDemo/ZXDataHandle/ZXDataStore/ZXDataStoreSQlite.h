@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef struct SqlResult {
     BOOL success;
     char *error;
-    NSArray *resData;
+    __unsafe_unretained NSArray *resData;
 }sqlResult;
 
 @interface ZXDataStoreSQlite : NSObject
