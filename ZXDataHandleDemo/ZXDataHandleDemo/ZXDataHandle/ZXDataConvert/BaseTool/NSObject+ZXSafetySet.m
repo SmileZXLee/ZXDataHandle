@@ -23,7 +23,9 @@
 }
 -(void)zx_objSaftySetValue:(id)value forKey:(NSString *)key{
     ///因为模型赋值此时不存在找不到key的情况，因此直接返回
-    [self setValue:value forKey:key];
+    if(![value isKindOfClass:[NSNull class]] && value){
+        [self setValue:value forKey:key];
+    }
     return;
     NSArray *proNamesArr = [[self class] getAllPropertyNames];
     if([proNamesArr containsObject:key]){
