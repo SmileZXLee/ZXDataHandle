@@ -8,6 +8,7 @@
 
 #import "NSObject+ZXSafetySet.h"
 #import "NSObject+ZXGetProperty.h"
+#import "ZXDataHandleLog.h"
 @implementation NSObject (ZXSafetySet)
 -(id)zx_objSafetyReadForKey:(NSString *)key{
     ///因为模型取值此时不存在找不到key的情况，因此直接返回
@@ -22,11 +23,17 @@
     return returnObj;
 }
 -(void)zx_objSaftySetValue:(id)value forKey:(NSString *)key{
-    ///因为模型赋值此时不存在找不到key的情况，因此直接返回
     if(![value isKindOfClass:[NSNull class]] && value){
-        [self setValue:value forKey:key];
+        if([value isKindOfClass:[NSArray class]]){
+            if([value count]){
+                [self setValue:value forKey:key];
+            }
+        }else{
+            [self setValue:value forKey:key];
+        }
     }
     return;
+    ///因为模型赋值此时不存在找不到key的情况，因此直接返回
     NSArray *proNamesArr = [[self class] getAllPropertyNames];
     if([proNamesArr containsObject:key]){
         [self setValue:value forKey:key];

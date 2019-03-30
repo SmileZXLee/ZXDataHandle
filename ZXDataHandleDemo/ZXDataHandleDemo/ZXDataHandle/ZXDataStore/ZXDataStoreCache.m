@@ -7,6 +7,9 @@
 //  GitHub:https://github.com/SmileZXLee/ZXDataHandle
 
 #import "ZXDataStoreCache.h"
+#import "NSObject+ZXToDic.h"
+#import "ZXDataHandleLog.h"
+#import "ZXDataType.h"
 @implementation ZXDataStoreCache
 
 #pragma mark 将数据写入用户偏好

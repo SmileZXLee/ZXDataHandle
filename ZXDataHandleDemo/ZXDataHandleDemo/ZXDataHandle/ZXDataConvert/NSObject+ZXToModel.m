@@ -13,6 +13,10 @@
 #import "NSString+ZXDataConvert.h"
 #import "NSObject+ZXSafetySet.h"
 #import "NSObject+ZXDataConvertRule.h"
+#import "NSDictionary+ZXSafetySet.h"
+#import "NSString+ZXRegular.h"
+#import "NSObject+ZXToJson.h"
+#import "NSObject+ZXToDic.h"
 @implementation NSObject (ZXToModel)
 +(instancetype)zx_modelWithDic:(NSMutableDictionary *)dic{
     if([ZXDataType isFoudationClass:self]){

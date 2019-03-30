@@ -43,6 +43,7 @@
 		74A3EFE421F9B8B500950BF8 /* ZXClassPrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3EFE321F9B8B500950BF8 /* ZXClassPrint.m */; };
 		74A3EFE821FAA08000950BF8 /* NSObject+ZXToDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3EFE721FAA08000950BF8 /* NSObject+ZXToDic.m */; };
 		74D7E9362223E41500D871CA /* NSData+ZXDataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D7E9352223E41500D871CA /* NSData+ZXDataConvert.m */; };
+		74EA2E44224F182F003F55E3 /* SqlResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EA2E43224F182F003F55E3 /* SqlResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,7 +108,6 @@
 		7454331921F5CD060032B63B /* ZXDataType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXDataType.m; sourceTree = "<group>"; };
 		7454331E21F6EA0A0032B63B /* ZXDecimalNumberTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXDecimalNumberTool.h; sourceTree = "<group>"; };
 		7454331F21F6EA0A0032B63B /* ZXDecimalNumberTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXDecimalNumberTool.m; sourceTree = "<group>"; };
-		7454332121F6EE700032B63B /* ZXDataHandle-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZXDataHandle-prefix.pch"; sourceTree = "<group>"; };
 		7454332221F6EEB00032B63B /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		7454332A21F700BF0032B63B /* Boy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Boy.h; sourceTree = "<group>"; };
 		7454332B21F700BF0032B63B /* Boy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Boy.m; sourceTree = "<group>"; };
@@ -138,6 +138,10 @@
 		74A3EFE721FAA08000950BF8 /* NSObject+ZXToDic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZXToDic.m"; sourceTree = "<group>"; };
 		74D7E9342223E41500D871CA /* NSData+ZXDataConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ZXDataConvert.h"; sourceTree = "<group>"; };
 		74D7E9352223E41500D871CA /* NSData+ZXDataConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ZXDataConvert.m"; sourceTree = "<group>"; };
+		74EA2E40224F1242003F55E3 /* ZXDataHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXDataHandle.h; sourceTree = "<group>"; };
+		74EA2E41224F1301003F55E3 /* ZXDataHandleLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXDataHandleLog.h; sourceTree = "<group>"; };
+		74EA2E42224F182F003F55E3 /* SqlResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SqlResult.h; sourceTree = "<group>"; };
+		74EA2E43224F182F003F55E3 /* SqlResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SqlResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,8 @@
 				744C3C9421FEF1050040408A /* ZXClassArchived.m */,
 				744C3C9C21FEFCF80040408A /* NSObject+ZXSQliteHandle.h */,
 				744C3C9D21FEFCF80040408A /* NSObject+ZXSQliteHandle.m */,
+				74EA2E42224F182F003F55E3 /* SqlResult.h */,
+				74EA2E43224F182F003F55E3 /* SqlResult.m */,
 			);
 			path = ZXDataStore;
 			sourceTree = "<group>";
@@ -243,7 +249,8 @@
 				744C3C8921FEAE680040408A /* ZXDataStore */,
 				7454330A21F5BE940032B63B /* ZXDataConvert */,
 				7454331421F5C7790032B63B /* ZXDataHandleHeaders.h */,
-				7454332121F6EE700032B63B /* ZXDataHandle-prefix.pch */,
+				74EA2E41224F1301003F55E3 /* ZXDataHandleLog.h */,
+				74EA2E40224F1242003F55E3 /* ZXDataHandle.h */,
 				744C3CA522029F460040408A /* USAGE.md */,
 			);
 			path = ZXDataHandle;
@@ -468,6 +475,7 @@
 				745432DC21F5BDEF0032B63B /* ViewController.m in Sources */,
 				745432E721F5BDEF0032B63B /* main.m in Sources */,
 				74A3EFE421F9B8B500950BF8 /* ZXClassPrint.m in Sources */,
+				74EA2E44224F182F003F55E3 /* SqlResult.m in Sources */,
 				745432D921F5BDEF0032B63B /* AppDelegate.m in Sources */,
 				74A3EFCF21F99BC000950BF8 /* NSArray+ZXDataConvert.m in Sources */,
 				7454332C21F700BF0032B63B /* Boy.m in Sources */,

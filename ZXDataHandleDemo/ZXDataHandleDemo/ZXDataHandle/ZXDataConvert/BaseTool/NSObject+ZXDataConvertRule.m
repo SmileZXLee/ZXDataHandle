@@ -7,7 +7,7 @@
 //  GitHub:https://github.com/SmileZXLee/ZXDataHandle
 
 #import "NSObject+ZXDataConvertRule.h"
-
+#import "NSDictionary+ZXSafetySet.h"
 @implementation NSObject (ZXDataConvertRule)
 +(NSDictionary *)getInArrModelNameDic{
     if([self respondsToSelector:@selector(zx_inArrModelName)]){

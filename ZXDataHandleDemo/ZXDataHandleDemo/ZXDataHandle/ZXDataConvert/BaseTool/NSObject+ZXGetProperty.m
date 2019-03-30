@@ -7,6 +7,8 @@
 //  GitHub:https://github.com/SmileZXLee/ZXDataHandle
 
 #import "NSObject+ZXGetProperty.h"
+#import "ZXDataConvert.h"
+#import "NSDictionary+ZXSafetySet.h"
 #import <objc/runtime.h>
 @implementation NSObject (ZXGetProperty)
 +(NSMutableArray *)getAllPropertyNames{

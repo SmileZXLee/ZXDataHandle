@@ -7,7 +7,7 @@
 //  GitHub:https://github.com/SmileZXLee/ZXDataHandle
 
 #import "NSDictionary+ZXDataConvert.h"
-
+#import "ZXDataHandleLog.h"
 @implementation NSDictionary (ZXDataConvert)
 -(NSString *)zx_dicToJsonStr{
     NSData *jsonData = [self zx_dicToJSONData:self];

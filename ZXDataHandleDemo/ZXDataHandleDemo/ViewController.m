@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "ZXDataHandle.h"
+
 #import "Girl.h"
 #import "Boy.h"
 #import "Cat.h"
@@ -233,9 +235,6 @@
 -(void)test18{
     [ZXDataStoreSQlite dropDb];
 }
-
-
-
 
 
 

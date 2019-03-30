@@ -12,6 +12,8 @@
 #import "NSObject+ZXSafetySet.h"
 #import "NSObject+ZXDataConvertRule.h"
 #import "NSString+ZXDataConvert.h"
+#import "NSObject+ZXToJson.h"
+#import "NSDictionary+ZXSafetySet.h"
 @implementation NSObject (ZXToDic)
 -(id)zx_toDic{
     DataType dataType = [ZXDataType zx_dataType:self];

@@ -7,7 +7,7 @@
 //  GitHub:https://github.com/SmileZXLee/ZXDataHandle
 
 #import "ZXClassPrint.h"
-
+#import "NSObject+ZXToJson.h"
 @implementation ZXClassPrint
 - (NSString *)description {
     return [self zx_toJsonStr];

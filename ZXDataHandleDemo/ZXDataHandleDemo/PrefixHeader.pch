@@ -9,6 +9,5 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-#import "ZXDataHandle-prefix.pch"
 
 #endif /* PrefixHeader_pch */

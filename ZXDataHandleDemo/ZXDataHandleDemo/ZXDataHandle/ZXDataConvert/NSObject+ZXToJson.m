@@ -10,6 +10,10 @@
 #import "NSDictionary+ZXDataConvert.h"
 #import "NSArray+ZXDataConvert.h"
 #import "NSData+ZXDataConvert.h"
+#import "ZXDataType.h"
+#import "NSObject+ZXToDic.h"
+#import "NSDictionary+ZXSafetySet.h"
+#import "NSString+ZXRegular.h"
 @implementation NSObject (ZXToJson)
 -(NSString *)zx_toJsonStr{
     NSString *resJsonStr = nil;

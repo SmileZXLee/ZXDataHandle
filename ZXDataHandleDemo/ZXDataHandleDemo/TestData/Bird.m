@@ -7,7 +7,7 @@
 //
 
 #import "Bird.h"
-
+#import "NSString+ZXDataConvert.h"
 @implementation Bird
 +(NSDictionary *)zx_inArrModelName{
     return @{@"boys" : @"Boy"};

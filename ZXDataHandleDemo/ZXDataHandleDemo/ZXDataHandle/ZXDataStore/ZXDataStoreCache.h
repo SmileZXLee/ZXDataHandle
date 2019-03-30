@@ -7,7 +7,6 @@
 //  GitHub:https://github.com/SmileZXLee/ZXDataHandle
 
 #import <Foundation/Foundation.h>
-#define ZXDocPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
 
 NS_ASSUME_NONNULL_BEGIN
 
