@@ -1,5 +1,20 @@
 #  ZXDataHandle使用方法
 GitHub:https://github.com/SmileZXLee/ZXDataHandle
+## 安装
+### 通过CocoaPods安装
+```ruby
+pod 'ZXDataHandle'
+```
+* 导入头文件
+```objective-c
+#import "ZXDataHandle.h"
+```
+### 手动导入
+* 将ZXDataHandle拖入项目中。
+* 导入头文件
+```objective-c
+#import "ZXDataHandle.h"
+```
 ## 数据转换-ZXDataConvert
 注：浮点数精度问题内部已自动处理
 
@@ -11,21 +26,21 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 下面是详细的例子：  
 
 1. 字典、字典数组、Json字符串或NSData -> 模型：  
-```
+```objective-c
 [Class zx_modelWithObj:obj];
 ```
 例：[Bird zx_modelWithObj:dic];  
 注：Class为目标模型类，obj可以是单一字典、字典数组、Json字符串或NSData。  
 
 2. 模型、模型数组、Json字符串或NSData -> 字典
-```
+```objective-c
 [obj zx_toDic];
 ```
 例：[bird zx_toDic];
 注：obj可以是单一模型、模型数组、Json字符串或NSData
 
 3. 字典、字典数组、模型、模型数组或NSData -> Json 字符串
-```
+```objective-c
 [obj zx_toJsonStr];
 ```
 例：[bird zx_toJsonStr];
