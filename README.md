@@ -5,13 +5,10 @@ GitHub:https://github.com/SmileZXLee/ZXDataHandle
 ```ruby
 pod 'ZXDataHandle'
 ```
-* 导入头文件
-```objective-c
-#import "ZXDataHandle.h"
-```
 ### 手动导入
 * 将ZXDataHandle拖入项目中。
-* 导入头文件
+
+### 导入头文件
 ```objective-c
 #import "ZXDataHandle.h"
 ```
