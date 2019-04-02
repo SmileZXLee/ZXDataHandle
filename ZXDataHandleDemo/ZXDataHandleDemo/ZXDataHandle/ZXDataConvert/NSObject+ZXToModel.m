@@ -37,7 +37,11 @@
                     Class subClass = NSClassFromString(subClassStr);
                     if(subClass){
                         id subModel = [subClass zx_modelWithDic:value];
-                        [modelObj zx_objSaftySetValue:subModel forKey:proName];
+                        if(subModel){
+                            [modelObj zx_objSaftySetValue:subModel forKey:proName];
+                        }else{
+                            [modelObj zx_objSaftySetValue:value forKey:proName];
+                        }
                     }
                 }
             }else if(dataType == DataTypeArr){
