@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = 'ZXDataHandle'
-s.version      = '1.0.1'
+s.version      = '1.0.2'
 s.summary      = '轻量级数据转换和存储框架'
 s.homepage     = 'https://github.com/SmileZXLee/ZXDataHandle'
 s.license      = 'MIT'
