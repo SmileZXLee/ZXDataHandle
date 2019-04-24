@@ -170,8 +170,7 @@
     apple.name = @"嘻哈苹果";
     apple.dec = @"很好吃吧234";
     apple.soldMoney = 1001;
-    [ZXDataStoreCache arcObj:apple pathComponent:@"apple"];
-    
+    [ZXDataStoreCache arcObj:apple pathComponent:@"test1/test2/apple"];
 }
 
 #pragma mark 将一条记录存储到数据库
