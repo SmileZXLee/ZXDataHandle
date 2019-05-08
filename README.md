@@ -47,7 +47,7 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 * 属性替换1（指定属性修改）
 ```objective-c
 +(NSDictionary *)zx_replaceProName{
-  return @{@"uid" : @"id"};
+    return @{@"uid" : @"id"};
 }
 ```
 注：模型中的uid属性将会被字典中key：id对应的value赋值
@@ -55,7 +55,7 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 * 属性替换2（全部属性修改）
 ```objective-c
 +(NSString *)zx_replaceProName121:(NSString *)proName{
-  return [proName strToUnderLine];
+    return [proName strToUnderLine];
 }
 ```
 注1：模型中处理前的属性为proName，若返回的字符串长度大于0，则使用返回的字符串，示例代码中的操作会将当前对象中所有属性名由驼峰形式转为下划线的形式。
@@ -66,7 +66,7 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 * 模型中包含数组，需要声明数组中存储的Class  
 ```objective-c
 +(NSDictionary *)zx_inArrModelName{
-  return @{@"boysArray" : @"Boy"};
+    return @{@"boysArray" : @"Boy"};
 }
 ```
 
@@ -136,11 +136,11 @@ NSLog("操作结果-%i",res);
 //创建一个对象数组
 NSMutableArray *appleArr = [NSMutableArray array];
 for (NSUInteger i = 0; i < 10; i++) {
-  Apple *apple = [[Apple alloc]init];
-  apple.name = @"嘻哈苹果";
-  apple.dec = @"很好吃哦";
-  apple.soldMoney = 100 + i;
-  [appleArr addObject:apple];
+    Apple *apple = [[Apple alloc]init];
+    apple.name = @"嘻哈苹果";
+    apple.dec = @"很好吃哦";
+    apple.soldMoney = 100 + i;
+    [appleArr addObject:apple];
 }
 
 //保存
