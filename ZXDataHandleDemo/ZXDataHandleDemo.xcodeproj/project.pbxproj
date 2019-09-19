@@ -33,6 +33,7 @@
 		7454333221F708220032B63B /* NSString+ZXRegular.m in Sources */ = {isa = PBXBuildFile; fileRef = 7454333121F708220032B63B /* NSString+ZXRegular.m */; };
 		7454333521F70EC10032B63B /* Girl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7454333421F70EC10032B63B /* Girl.m */; };
 		7454333821F716A20032B63B /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = 7454333721F716A20032B63B /* Cat.m */; };
+		74914D2B23332B52004EB52C /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 74914D2A23332B52004EB52C /* Test.m */; };
 		74A3EFC921F997DC00950BF8 /* NSString+ZXDataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3EFC821F997DC00950BF8 /* NSString+ZXDataConvert.m */; };
 		74A3EFCC21F99BAF00950BF8 /* NSDictionary+ZXDataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3EFCB21F99BAF00950BF8 /* NSDictionary+ZXDataConvert.m */; };
 		74A3EFCF21F99BC000950BF8 /* NSArray+ZXDataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3EFCE21F99BC000950BF8 /* NSArray+ZXDataConvert.m */; };
@@ -119,6 +120,8 @@
 		7454333421F70EC10032B63B /* Girl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Girl.m; sourceTree = "<group>"; };
 		7454333621F716A20032B63B /* Cat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cat.h; sourceTree = "<group>"; };
 		7454333721F716A20032B63B /* Cat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cat.m; sourceTree = "<group>"; };
+		74914D2923332B52004EB52C /* Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		74914D2A23332B52004EB52C /* Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		74A3EFC721F997DC00950BF8 /* NSString+ZXDataConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ZXDataConvert.h"; sourceTree = "<group>"; };
 		74A3EFC821F997DC00950BF8 /* NSString+ZXDataConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZXDataConvert.m"; sourceTree = "<group>"; };
 		74A3EFCA21F99BAF00950BF8 /* NSDictionary+ZXDataConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ZXDataConvert.h"; sourceTree = "<group>"; };
@@ -294,6 +297,8 @@
 				744C3C9F21FFE6120040408A /* Apple.h */,
 				744C3CA021FFE6120040408A /* Apple.m */,
 				74A3EFD421F9A02A00950BF8 /* TestJsonStr */,
+				74914D2923332B52004EB52C /* Test.h */,
+				74914D2A23332B52004EB52C /* Test.m */,
 			);
 			path = TestData;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				744C3CA121FFE6120040408A /* Apple.m in Sources */,
+				74914D2B23332B52004EB52C /* Test.m in Sources */,
 				7454333521F70EC10032B63B /* Girl.m in Sources */,
 				7454332F21F701290032B63B /* Dog.m in Sources */,
 				744C3C8F21FEE2A90040408A /* ZXDataStoreCache.m in Sources */,

@@ -42,6 +42,22 @@
                         }else{
                             [modelObj zx_objSaftySetValue:value forKey:proName];
                         }
+                    }else{
+                        id subModel = nil;
+                        NSDictionary *inArrModelNameDic = [self getInArrModelNameDic];
+                        if(inArrModelNameDic){
+                            NSString *subClassStr = [inArrModelNameDic zx_dicSafetyReadForKey:proName];
+                            if(subClassStr.length){
+                                if(subClassStr){
+                                    Class subClass = NSClassFromString(subClassStr);
+                                    if(subClass){
+                                        subModel = [[subClass class] zx_modelWithDic:value];
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        [modelObj zx_objSaftySetValue:subModel ? subModel :value forKey:proName];
                     }
                 }
             }else if(dataType == DataTypeArr){

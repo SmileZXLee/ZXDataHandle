@@ -14,4 +14,5 @@
 @property (nonatomic, copy) NSString *score;
 @property (nonatomic, strong) NSNumber *hasMoney;
 @property (nonatomic, copy) NSString *hasClothes;
+@property (nonatomic, strong) id data;
 @end

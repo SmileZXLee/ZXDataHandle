@@ -51,7 +51,7 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 注2：属性替换1和属性替换2都涉及属性的替换操作，当二者发生冲突时，属性替换1的方法优先级高于属性替换2，也就是说，属性替换1中（+zx_replaceProName）修改的属性，在属性替换2中（+zx_replaceProName121）不会被修改。
 
 
-* 模型中包含数组，需要声明数组中存储的Class  
+* 模型中包含数组，需要声明数组中存储的Class (模型中包含字典，字典自动转换为子模型同样适用)
 ```
 +(NSDictionary *)zx_inArrModelName{
     return @{@"boysArray" : @"Boy"};
