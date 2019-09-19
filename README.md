@@ -1,5 +1,8 @@
 #  ZXDataHandle使用方法
-GitHub:https://github.com/SmileZXLee/ZXDataHandle
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/skx926/KSPhotoBrowser/master/LICENSE)&nbsp;
+[![CocoaPods](http://img.shields.io/cocoapods/v/ZXDataHandle.svg?style=flat)](http://cocoapods.org/?q=ZXDataHandle)&nbsp;
+[![CocoaPods](http://img.shields.io/cocoapods/p/ZXDataHandle.svg?style=flat)](http://cocoapods.org/?q=ZXDataHandle)&nbsp;
+[![Support](https://img.shields.io/badge/support-iOS%208.0%2B%20-blue.svg?style=flat)](https://www.apple.com/nl/ios/)&nbsp;
 ## 安装
 ### 通过CocoaPods安装
 ```ruby
@@ -47,7 +50,7 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 * 属性替换1（指定属性修改）
 ```objective-c
 +(NSDictionary *)zx_replaceProName{
-return @{@"uid" : @"id"};
+    return @{@"uid" : @"id"};
 }
 ```
 注：模型中的uid属性将会被字典中key：id对应的value赋值
@@ -55,7 +58,7 @@ return @{@"uid" : @"id"};
 * 属性替换2（全部属性修改）
 ```objective-c
 +(NSString *)zx_replaceProName121:(NSString *)proName{
-return [proName strToUnderLine];
+    return [proName strToUnderLine];
 }
 ```
 注1：模型中处理前的属性为proName，若返回的字符串长度大于0，则使用返回的字符串，示例代码中的操作会将当前对象中所有属性名由驼峰形式转为下划线的形式。
@@ -66,7 +69,7 @@ return [proName strToUnderLine];
 * 模型中包含数组，需要声明数组中存储的Class  
 ```objective-c
 +(NSDictionary *)zx_inArrModelName{
-return @{@"boysArray" : @"Boy"};
+    return @{@"boysArray" : @"Boy"};
 }
 ```
 
@@ -89,12 +92,14 @@ id data = [ZXDataStoreCache readObjForKey:@"123"];
 @interface Apple : ZXClassArchived
 
 ```objective-c
-//数据归档，将数据存储至当前沙盒document/apple目录下
+//数据归档，将数据存储至当前沙盒document目录下，文件名为apple
 Apple *apple = [[Apple alloc]init];
 apple.name = @"嘻哈苹果";
 apple.dec = @"很好吃吧234";
 apple.soldMoney = 1001;
 [ZXDataStoreCache arcObj:apple pathComponent:@"apple"];
+//支持多级存储,以下写法将自动创建文件夹并存储
+[ZXDataStoreCache arcObj:apple pathComponent:@"test1/test2/apple"];
 ```
 ```objective-c
 //数据读档，将数据从当前沙盒document/apple目录下读取出来
@@ -104,6 +109,11 @@ apple.dec = @"很好吃吧234";
 apple.soldMoney = 1001;
 id data = [ZXDataStoreCache unArcObjPathComponent:@"apple"];
 ```
+```objective-c
+//arcObj传nil即为删除，若pathComponent路径对应是一个文件，则删除此文件，若未文件夹，则删除此文件夹以及其中所有内容，包括子文件夹与子文件
+[ZXDataStoreCache arcObj:nil pathComponent:@"test1/test2/apple"];
+```
+
 ***
 2. Sqlite3数据库操作  
 注：ZXDataStore采取的是对象映射数据表的操作措施，因此所有操作都是面向对象的，您几乎不用写sql语句直接对数据库进行操作。
@@ -129,11 +139,11 @@ NSLog("操作结果-%i",res);
 //创建一个对象数组
 NSMutableArray *appleArr = [NSMutableArray array];
 for (NSUInteger i = 0; i < 10; i++) {
-Apple *apple = [[Apple alloc]init];
-apple.name = @"嘻哈苹果";
-apple.dec = @"很好吃哦";
-apple.soldMoney = 100 + i;
-[appleArr addObject:apple];
+    Apple *apple = [[Apple alloc]init];
+    apple.name = @"嘻哈苹果";
+    apple.dec = @"很好吃哦";
+    apple.soldMoney = 100 + i;
+    [appleArr addObject:apple];
 }
 
 //保存
