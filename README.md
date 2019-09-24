@@ -95,25 +95,28 @@ id data = [ZXDataStoreCache readObjForKey:@"123"];
 //数据归档，将数据存储至当前沙盒document目录下，文件名为apple
 Apple *apple = [[Apple alloc]init];
 apple.name = @"嘻哈苹果";
-apple.dec = @"很好吃吧234";
-apple.soldMoney = 1001;
+//将apple对象存储到document文件夹中，名为apple
 [ZXDataStoreCache arcObj:apple pathComponent:@"apple"];
-//支持多级存储,以下写法将自动创建文件夹并存储
-[ZXDataStoreCache arcObj:apple pathComponent:@"test1/test2/apple"];
+//支持多级存储,以下写法将自动创建文件夹并存储,下方代码会自动创建test1文件夹，并在test1文件夹中创建test2文件夹，并将apple对象存储到test2中
+//[ZXDataStoreCache arcObj:apple pathComponent:@"test1/test2/apple"];
 ```
 ```objective-c
 //数据读档，将数据从当前沙盒document/apple目录下读取出来
 Apple *apple = [[Apple alloc]init];
 apple.name = @"嘻哈苹果";
-apple.dec = @"很好吃吧234";
-apple.soldMoney = 1001;
 id data = [ZXDataStoreCache unArcObjPathComponent:@"apple"];
 ```
 ```objective-c
-//arcObj传nil即为删除，若pathComponent路径对应是一个文件，则删除此文件，若未文件夹，则删除此文件夹以及其中所有内容，包括子文件夹与子文件
+//arcObj传nil即为删除，若pathComponent路径对应是一个文件，则删除此文件，若为文件夹，则删除此文件夹以及其中所有内容，包括子文件夹与子文件
 [ZXDataStoreCache arcObj:nil pathComponent:@"test1/test2/apple"];
 ```
-
+* 用户数据归档和读档（可以直接对自定义类进行操作）
+```objective-c
+//需要先存储用户id（在用户登录成功后或账号切换成功后存储）
+[ZXDataStoreCache saveUserAccount:@"88888888"];
+//apple将被存储在/88888888文件夹中，名称为userModel
+[ZXDataStoreCache saveUserObj:apple pathComponent:@"userModel"];
+```
 ***
 2. Sqlite3数据库操作  
 注：ZXDataStore采取的是对象映射数据表的操作措施，因此所有操作都是面向对象的，您几乎不用写sql语句直接对数据库进行操作。
