@@ -204,7 +204,6 @@ typedef enum {
 
 #pragma mark 判断路径对应类型
 +(PathAttr)getPathAttrWithPathComponent:(NSString *)pathComponent{
-    NSLog(@"ZXDocPath--%@",ZXDocPath);
     BOOL isDir = NO;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL pathExist = [fileManager fileExistsAtPath:[ZXDocPath stringByAppendingPathComponent:pathComponent] isDirectory:&isDir];
