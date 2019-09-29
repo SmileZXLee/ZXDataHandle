@@ -108,14 +108,10 @@
                         [modelObj zx_objSaftySetValue:value forKey:proName];
                     }
                 }else{
-                    if(dataType == DataTypeFloat || dataType == DataTypeDouble){
+                    if(dataType == DataTypeFloat || dataType == DataTypeDouble || dataType == DataTypeInt || dataType == DataTypeBool || dataType == DataTypeLong){
                         value = [ZXDecimalNumberTool zx_decimalNumber:[value doubleValue]];
                     }
-                    if([proType hasPrefix:@"T@\"NSNumber\""]){
-                        [modelObj zx_objSaftySetValue:value forKey:proName];
-                    }else{
-                        [modelObj zx_objSaftySetValue:[value stringValue] forKey:proName];
-                    }
+                    [modelObj zx_objSaftySetValue:value forKey:proName];
                 }
             }
         }
