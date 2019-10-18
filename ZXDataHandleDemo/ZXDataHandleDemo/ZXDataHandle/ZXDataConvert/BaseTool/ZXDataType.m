@@ -30,7 +30,28 @@
         return DataTypeInt;
     }
     if (strcmp([ifNumber objCType],@encode(long)) == 0) {
+        return DataTypeLong;
+    }
+    if (strcmp([ifNumber objCType],@encode(long long)) == 0) {
+        return DataTypeLong;
+    }
+    if (strcmp([ifNumber objCType],@encode(char)) == 0) {
         return DataTypeInt;
+    }
+    if (strcmp([ifNumber objCType],@encode(short)) == 0) {
+        return DataTypeInt;
+    }
+    if (strcmp([ifNumber objCType],@encode(unsigned char)) == 0) {
+        return DataTypeInt;
+    }
+    if (strcmp([ifNumber objCType],@encode(unsigned int)) == 0) {
+        return DataTypeInt;
+    }
+    if (strcmp([ifNumber objCType],@encode(unsigned short)) == 0) {
+        return DataTypeInt;
+    }
+    if (strcmp([ifNumber objCType],@encode(unsigned long long)) == 0) {
+        return DataTypeLong;
     }
     if (strcmp([ifNumber objCType],@encode(float)) == 0) {
         return DataTypeFloat;

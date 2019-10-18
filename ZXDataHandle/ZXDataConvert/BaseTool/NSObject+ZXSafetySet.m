@@ -32,14 +32,6 @@
             [self setValue:value forKey:key];
         }
     }
-    return;
-    ///因为模型赋值此时不存在找不到key的情况，因此直接返回
-    NSArray *proNamesArr = [[self class] getAllPropertyNames];
-    if([proNamesArr containsObject:key]){
-        [self setValue:value forKey:key];
-    }else{
-        ZXDataHandleLog(@"对象Value赋值失败，对象中不包含属性:%@",key);
-    }
 }
 
 @end
