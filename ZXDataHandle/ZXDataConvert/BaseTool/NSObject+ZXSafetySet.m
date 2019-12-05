@@ -9,6 +9,7 @@
 #import "NSObject+ZXSafetySet.h"
 #import "NSObject+ZXGetProperty.h"
 #import "ZXDataHandleLog.h"
+#import "ZXDataConvert.h"
 @implementation NSObject (ZXSafetySet)
 -(id)zx_objSafetyReadForKey:(NSString *)key{
     ///因为模型取值此时不存在找不到key的情况，因此直接返回
@@ -23,6 +24,10 @@
     return returnObj;
 }
 -(void)zx_objSaftySetValue:(id)value forKey:(NSString *)key{
+    if([ZXDataConvert shareInstance].zx_dataConvertSetterBlock){
+        id resValue = [ZXDataConvert shareInstance].zx_dataConvertSetterBlock(key,value,self);
+        value = resValue;
+    }
     if(![value isKindOfClass:[NSNull class]] && value){
         if([value isKindOfClass:[NSArray class]]){
             if([value count]){

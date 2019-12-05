@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "ZXDataHandle.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +16,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [ZXDataConvert shareInstance].zx_dataConvertSetterBlock = ^id _Nonnull(NSString * _Nonnull key, id  _Nonnull orgValue, id owner) {
+        //如果给模型赋值的是NSNumer类型，则一律转为NSString类型
+        /*
+        if([orgValue isKindOfClass:[NSNumber class]]){
+            return [NSString stringWithFormat:@"%@",orgValue];
+        }*/
+        return orgValue;
+    };
     return YES;
 }
 

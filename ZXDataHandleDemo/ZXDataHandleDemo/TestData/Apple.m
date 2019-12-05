@@ -9,5 +9,5 @@
 #import "Apple.h"
 
 @implementation Apple
-
+ZXClassArchivedImplementation
 @end

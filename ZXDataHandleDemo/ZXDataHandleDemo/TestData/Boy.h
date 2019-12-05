@@ -17,4 +17,5 @@
 @property (nonatomic, strong) NSNumber *hasMoney;
 @property (nonatomic, strong) Dog *myDog;
 @property (nonatomic, strong) Cat *myCat;
+@property (nonatomic, strong) NSArray *arrayTest;
 @end

@@ -13,6 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ZXDataConvert : NSObject
 + (instancetype)shareInstance;
 @property(nonatomic,strong)NSMutableDictionary *allPropertyDic;
+
+/**
+ 字典转模型model赋值前都会走这个回调，可以在赋值之前对其进行修改
+ key:属性名
+ orgValue:属性名对应的即将被赋值的Value
+ owner:属性所属的对象
+ */
+@property(nonatomic,copy)id(^zx_dataConvertSetterBlock)(NSString *key, id orgValue,id owner);
 @end
 
 NS_ASSUME_NONNULL_END

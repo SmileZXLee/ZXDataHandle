@@ -84,11 +84,13 @@
                             [subMuArr addObject:subObj];
                         }
                         
-                    }
-                    if(subDataType == DataTypeArr){
+                    }else if(subDataType == DataTypeArr){
                         id subModel = [[subObj class] zx_modelWithArr:subObj];
                         [subMuArr addObject:subModel];
+                    }else{
+                        [subMuArr addObject:subObj];
                     }
+                    
                 }
                 [modelObj zx_objSaftySetValue:subMuArr forKey:proName];
             }else{
