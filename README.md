@@ -73,6 +73,19 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 }
 ```
 
+5. 在字典转模型model赋值前对其进行修改，可以在AppDelegate的didFinishLaunchingWithOptions直接书写以下代码
+```objective-c
+[ZXDataConvert shareInstance].zx_dataConvertSetterBlock = ^id _Nonnull(NSString * _Nonnull key, id  _Nonnull orgValue, id owner) {
+    //key:属性名
+    //orgValue:属性名对应的即将被赋值的Value
+    //owner:属性所属的对象
+    //如果给模型赋值的是NSNumer类型，则一律转为NSString类型
+    if([orgValue isKindOfClass:[NSNumber class]]){
+            return [NSString stringWithFormat:@"%@",orgValue];
+    }
+    return orgValue;
+};
+```
 ## 数据存储-ZXDataStore
 1. 文件，数据直接存储
 * 用户偏好存储与读取（无法直接对自定义类进行操作）
@@ -89,7 +102,17 @@ id data = [ZXDataStoreCache readObjForKey:@"123"];
 ```
 * 数据归档与读档（可以直接对自定义类进行操作）
 注:归档读档的类需要继承ZXClassArchived，即可直接进行归档读档操作
+```objective-c
 @interface Apple : ZXClassArchived
+```
+或在model的.m中写上ZXClassArchivedImplementation 
+```objective-c
+#import "Apple.h"
+@implementation Apple
+ZXClassArchivedImplementation
+@end
+
+```
 
 ```objective-c
 //数据归档，将数据存储至当前沙盒document目录下，文件名为apple
@@ -254,18 +277,3 @@ Sqlite3操作仅允许对表进行更改表名，增加列的操作，我们可�
 ZXSQliteHandle默认为您当前项目创建一个您当前项目的BundleId.sqlite的数据库，数据库中的表名与对应对象一一对应，主键名为id且自增，您无需关心数据库如何创建，表如何设计，SQL语句如何写，但是如此也必然有弊端，ZXSQliteHandle可以满足绝大部分需求，但诸如外键，多表关联等等不常用的功能需要您额外处理。考虑到易用性等方面，ZXSQliteHandle仅提供核心的数据库处理，还望谅解。
 
 ### 任何问题欢迎随时issue我
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
