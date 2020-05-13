@@ -8,6 +8,7 @@
 
 #import "NSObject+ZXToModel.h"
 #import "ZXDataType.h"
+#import "ZXDataConvert.h"
 #import "NSObject+ZXGetProperty.h"
 #import "ZXDecimalNumberTool.h"
 #import "NSString+ZXDataConvert.h"
@@ -27,7 +28,8 @@
     [self getEnumPropertyNamesCallBack:^(NSString *proName,NSString *proType) {
         NSString *dicKeyProName = [self getReplacedProName:proName];
         id value = [dic zx_dicSafetyReadForKey:dicKeyProName];
-        if(value != NULL){
+        BOOL isinIgnorePros = [[self class] isinIgnorePros:proName];
+        if(value != NULL && !isinIgnorePros){
             DataType dataType = [ZXDataType zx_dataType:value];
             if(dataType == DataTypeDic){
                 NSArray *proTypeArr = [proType componentsSeparatedByString:@","];
@@ -94,6 +96,11 @@
                 }
                 [modelObj zx_objSaftySetValue:subMuArr forKey:proName];
             }else{
+                if([value isKindOfClass:[NSString class]]){
+                    if([value isEqualToString:@"96.6"]){
+                        NSLog(@"96.6");
+                    }
+                }
                 if(dataType == DataTypeNormalObj || dataType == DataTypeStr){
                     if([proType hasPrefix:@"T@\"NSNumber\""]){
                         if(dataType == DataTypeStr && [ZXDataType isNumberType:value]){
@@ -103,7 +110,11 @@
                         }else{
                             [modelObj zx_objSaftySetValue:value forKey:proName];
                         }
+                        
                     }else if([proType hasPrefix:@"T@"]){
+                        if([proType hasPrefix:@"T@\"NSString\""]){
+                            value = [ZXDataConvert handleValueToMatchModelPropertyTypeWithValue:value type:proType];
+                        }
                         [modelObj zx_objSaftySetValue:value forKey:proName];
                     }else{
                         value = [ZXDecimalNumberTool zx_decimalNumber:[value doubleValue]];
@@ -113,6 +124,7 @@
                     if(dataType == DataTypeFloat || dataType == DataTypeDouble || dataType == DataTypeInt || dataType == DataTypeBool || dataType == DataTypeLong){
                         value = [ZXDecimalNumberTool zx_decimalNumber:[value doubleValue]];
                     }
+                    value = [ZXDataConvert handleValueToMatchModelPropertyTypeWithValue:value type:proType];
                     [modelObj zx_objSaftySetValue:value forKey:proName];
                 }
             }

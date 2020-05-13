@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ZXDataHandle.h"
+#import "ZXDecimalNumberTool.h"
 
 #import "Girl.h"
 #import "Boy.h"
@@ -30,8 +31,9 @@
 #pragma mark - 数据转换部分
 #pragma mark 单一字典转模型
 -(void)test1{
-    NSDictionary *girlDic = @{@"name":@"小红",@"sex":@0,@"sign":@"很高兴认识大家嘻嘻嘻",@"score":@"96.6",@"hasMoney":@"8888.76",@"hasClothes":@"888",@"data":@{@"code":@"233",@"msg":@"hahah"}};
+    NSDictionary *girlDic = @{@"name":@"小红",@"sex":@0,@"sign":@"很高兴认识大家嘻嘻嘻",@"score":@96.6,@"hasMoney":@"8888.76",@"hasClothes":@"888",@"data":@{@"code":@"233",@"msg":@"hahah"}};
     Girl *model = [Girl zx_modelWithObj:[girlDic mutableCopy]];
+    
     NSLog(@"model--%@",model);
 }
 #pragma mark 字典中包含字典转模型
@@ -123,7 +125,7 @@
         girl.name = @"嘻哈女孩";
         girl.sex = @"0";
         girl.sign = @"大家好呀嘻嘻";
-        girl.score = @"98";
+        //girl.score = @"98";
         girl.hasMoney = @10;
         [girlsArr addObject:girl];
         i++;
@@ -149,7 +151,7 @@
         girl.name = @"嘻哈女孩";
         girl.sex = @"0";
         girl.sign = @"大家好呀嘻嘻";
-        girl.score = @"98";
+        //girl.score = @"98";
         girl.hasMoney = @10;
         [girlsArr addObject:girl];
         i++;

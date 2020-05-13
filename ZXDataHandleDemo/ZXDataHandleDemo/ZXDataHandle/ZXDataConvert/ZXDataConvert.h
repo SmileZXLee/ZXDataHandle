@@ -21,6 +21,14 @@ NS_ASSUME_NONNULL_BEGIN
  owner:属性所属的对象
  */
 @property(nonatomic,copy)id(^zx_dataConvertSetterBlock)(NSString *key, id orgValue,id owner);
+
+/**
+ 字典转模型时，自动调整赋值的value，使其类型与模型中对应属性类型一致
+
+ @param value 赋值的value
+ @param proType 模型中对应属性类型
+ */
++ (id)handleValueToMatchModelPropertyTypeWithValue:(id)value type:(NSString *)proType;
 @end
 
 NS_ASSUME_NONNULL_END

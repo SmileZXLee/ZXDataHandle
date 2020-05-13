@@ -7,7 +7,6 @@
 //
 
 #import "Girl.h"
-
 @implementation Girl
 +(NSDictionary *)zx_inArrModelName{
     //字典中包含字典也可通过此方法转换
