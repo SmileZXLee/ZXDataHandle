@@ -16,37 +16,37 @@ pod 'ZXDataHandle'
 #import "ZXDataHandle.h"
 ```
 ## 数据转换-ZXDataConvert
-注：浮点数精度问题内部已自动处理
+### 注：浮点数精度问题内部已自动处理(建议Model中使用NSString接收)
 
-概要：使用方法三句话就可以概括：  
+### 概要：使用方法三句话就可以概括：  
 a.有东西要转模型，调用模型类的+zx_modelWithObj:方法，并把这个东西传给它即可。    
 b.有东西要转字典，调用它的-zx_toDic方法即可。  
 c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。  
 
 下面是详细的例子：  
 
-1. 字典、字典数组、Json字符串或NSData -> 模型：  
+### 1. 字典、字典数组、Json字符串或NSData -> 模型：  
 ```objective-c
 [Class zx_modelWithObj:obj];
 ```
 例：[Bird zx_modelWithObj:dic];  
 注：Class为目标模型类，obj可以是单一字典、字典数组、Json字符串或NSData。  
 
-2. 模型、模型数组、Json字符串或NSData -> 字典
+### 2. 模型、模型数组、Json字符串或NSData -> 字典
 ```objective-c
 [obj zx_toDic];
 ```
 例：[bird zx_toDic];
 注：obj可以是单一模型、模型数组、Json字符串或NSData
 
-3. 字典、字典数组、模型、模型数组或NSData -> Json 字符串
+### 3. 字典、字典数组、模型、模型数组或NSData -> Json 字符串
 ```objective-c
 [obj zx_toJsonStr];
 ```
 例：[bird zx_toJsonStr];
 注：obj可以是字典，字典数组，模型、模型数组或NSData
 
-4. 数据转换特殊情况  
+### 4. 数据转换特殊情况  
 * 属性替换1（指定属性修改）
 ```objective-c
 +(NSDictionary *)zx_replaceProName{
@@ -73,7 +73,14 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 }
 ```
 
-5. 在字典转模型model赋值前对其进行修改，可以在AppDelegate的didFinishLaunchingWithOptions直接书写以下代码
+* 排除一些属性不进行任何转换处理
+```objective-c
++(NSArray *)zx_ignorePros{
+    return @[@"ignorePros"];
+}
+```
+
+### 5. 在字典转模型model赋值前对其进行修改，可以在AppDelegate的didFinishLaunchingWithOptions直接书写以下代码
 ```objective-c
 [ZXDataConvert shareInstance].zx_dataConvertSetterBlock = ^id _Nonnull(NSString * _Nonnull key, id  _Nonnull orgValue, id owner) {
     //key:属性名
@@ -86,7 +93,14 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
     return orgValue;
 };
 ```
+### 6. 自动类型转换
+#### 若Model中对应属性接收类型与json中属性类型不一致，ZXDataHandle会自动进行类型转换，规则如下
+* `{"test":9.11}` => `@property (copy, nonatomic) NSString *test` test值将自动被转换为NSString类型: test = @"9.11"
+* `{"test":"9.11"}` => `@property (assign, nonatomic) int test` test值将自动被转换为int类型: test = 9
+* `{"test":"9.11"}` => `@property (assign, nonatomic) float test` test值将自动被转换为float类型: test = 9.11
+
 ## 数据存储-ZXDataStore
+
 1. 文件，数据直接存储
 * 用户偏好存储与读取（无法直接对自定义类进行操作）
 
