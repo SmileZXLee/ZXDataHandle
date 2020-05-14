@@ -95,9 +95,9 @@ c.有东西要转Json字符串，调用它的-zx_toJsonStr方法即可。
 ```
 ### 6. 自动类型转换
 #### 若Model中对应属性接收类型与json中属性类型不一致，ZXDataHandle会自动进行类型转换，规则如下
-* `{"test":9.11}` => `@property (copy, nonatomic) NSString *test` test值将自动被转换为NSString类型: test = @"9.11"
-* `{"test":"9.11"}` => `@property (assign, nonatomic) int test` test值将自动被转换为int类型: test = 9
-* `{"test":"9.11"}` => `@property (assign, nonatomic) float test` test值将自动被转换为float类型: test = 9.11
+* `{"test":7.11}` => `@property (copy, nonatomic) NSString *test` test值将自动被转换为NSString类型: test = @"7.11"
+* `{"test":"7.11"}` => `@property (assign, nonatomic) int test` test值将自动被转换为int类型: test = 7
+* `{"test":"7.11"}` => `@property (assign, nonatomic) float test` test值将自动被转换为float类型: test = 7.11
 
 ## 数据存储-ZXDataStore
 
