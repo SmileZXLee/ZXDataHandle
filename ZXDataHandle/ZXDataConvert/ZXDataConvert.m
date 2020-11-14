@@ -25,8 +25,99 @@
 }
 
 + (id)handleValueToMatchModelPropertyTypeWithValue:(id)value type:(NSString *)proType{
+    NSLog(@"proType--%@",proType);
+    ZXDataValueAutoConvertMode dataValueAutoConvertMode = [ZXDataConvert shareInstance].zx_dataConvertConfig.zx_dataValueAutoConvertMode;
     if([proType hasPrefix:@"T@\"NSString\""]){
-        return [NSString stringWithFormat:@"%@",value];
+        if([value isKindOfClass:[NSString class]]){
+            return value;
+        }
+        switch (dataValueAutoConvertMode) {
+            case ZXDataValueAutoConvertModeEmpty:{
+                return @"";
+                break;
+            }
+            case ZXDataValueAutoConvertModeNil:{
+                return nil;
+                break;
+            }
+            case ZXDataValueAutoConvertModeOrg:{
+                return value;
+                break;
+            }
+            default:
+                break;
+        }
+        return nil;
+    }
+    if([proType hasPrefix:@"T@\"NSArray\""]){
+        if([value isKindOfClass:[NSArray class]]){
+            return value;
+        }
+        switch (dataValueAutoConvertMode) {
+            case ZXDataValueAutoConvertModeEmpty:{
+                return @[];
+                break;
+            }
+            case ZXDataValueAutoConvertModeNil:{
+                return nil;
+                break;
+            }
+            case ZXDataValueAutoConvertModeOrg:{
+                return value;
+                break;
+            }
+            default:
+                break;
+        }
+        return nil;
+    }
+    if([proType hasPrefix:@"T@\"NSMutableArray\""]){
+        if([value isKindOfClass:[NSArray class]]){
+            return [NSMutableArray arrayWithArray:value];
+        }
+        switch (dataValueAutoConvertMode) {
+            case ZXDataValueAutoConvertModeEmpty:{
+                return [NSMutableArray array];
+                break;
+            }
+            case ZXDataValueAutoConvertModeNil:{
+                return nil;
+                break;
+            }
+            case ZXDataValueAutoConvertModeOrg:{
+                return value;
+                break;
+            }
+            default:
+                break;
+        }
+        return nil;
+    }
+    if([proType hasPrefix:@"T@"]){
+        NSString *classNameStr = [[proType stringByReplacingOccurrencesOfString:@"T@\"" withString:@""]stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        Class cls = NSClassFromString(classNameStr);
+        if(cls && [value isKindOfClass:cls]){
+            return value;
+        }
+        switch (dataValueAutoConvertMode) {
+            case ZXDataValueAutoConvertModeEmpty:{
+                if(cls){
+                    return [cls new];
+                }
+                break;
+            }
+            case ZXDataValueAutoConvertModeNil:{
+                return nil;
+                break;
+            }
+            case ZXDataValueAutoConvertModeOrg:{
+                return value;
+                break;
+            }
+            default:
+                break;
+        }
+        return nil;
     }
     if([value isKindOfClass:[NSString class]]){
         BOOL isNumberType = [ZXDataType isNumberType:value];
@@ -48,7 +139,14 @@
             }
         }
     }
-    return value;
+    return nil;
+}
+
+- (ZXDataConvertConfig *)zx_dataConvertConfig{
+    if(!_zx_dataConvertConfig){
+        _zx_dataConvertConfig = [[ZXDataConvertConfig alloc]init];
+    }
+    return _zx_dataConvertConfig;
 }
 
 @end

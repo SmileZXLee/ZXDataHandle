@@ -7,7 +7,7 @@
 //  GitHub:https://github.com/SmileZXLee/ZXDataHandle
 
 #import <Foundation/Foundation.h>
-
+#import "ZXDataConvertConfig.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZXDataConvert : NSObject
@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
  owner:属性所属的对象
  */
 @property(nonatomic,copy)id(^zx_dataConvertSetterBlock)(NSString *key, id orgValue,id owner);
+
+@property(nonatomic,strong)ZXDataConvertConfig *zx_dataConvertConfig;
 
 /**
  字典转模型时，自动调整赋值的value，使其类型与模型中对应属性类型一致

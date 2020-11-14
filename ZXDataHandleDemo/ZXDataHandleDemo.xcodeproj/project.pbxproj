@@ -44,6 +44,7 @@
 		74A3EFE421F9B8B500950BF8 /* ZXClassPrint.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3EFE321F9B8B500950BF8 /* ZXClassPrint.m */; };
 		74A3EFE821FAA08000950BF8 /* NSObject+ZXToDic.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3EFE721FAA08000950BF8 /* NSObject+ZXToDic.m */; };
 		74D7E9362223E41500D871CA /* NSData+ZXDataConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D7E9352223E41500D871CA /* NSData+ZXDataConvert.m */; };
+		74E3D9CD255FE02F00C23F9C /* ZXDataConvertConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E3D9CC255FE02F00C23F9C /* ZXDataConvertConfig.m */; };
 		74EA2E44224F182F003F55E3 /* SqlResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 74EA2E43224F182F003F55E3 /* SqlResult.m */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,8 @@
 		74A3EFE721FAA08000950BF8 /* NSObject+ZXToDic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZXToDic.m"; sourceTree = "<group>"; };
 		74D7E9342223E41500D871CA /* NSData+ZXDataConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ZXDataConvert.h"; sourceTree = "<group>"; };
 		74D7E9352223E41500D871CA /* NSData+ZXDataConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ZXDataConvert.m"; sourceTree = "<group>"; };
+		74E3D9CB255FE02F00C23F9C /* ZXDataConvertConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXDataConvertConfig.h; sourceTree = "<group>"; };
+		74E3D9CC255FE02F00C23F9C /* ZXDataConvertConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXDataConvertConfig.m; sourceTree = "<group>"; };
 		74EA2E40224F1242003F55E3 /* ZXDataHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXDataHandle.h; sourceTree = "<group>"; };
 		74EA2E41224F1301003F55E3 /* ZXDataHandleLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXDataHandleLog.h; sourceTree = "<group>"; };
 		74EA2E42224F182F003F55E3 /* SqlResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SqlResult.h; sourceTree = "<group>"; };
@@ -277,6 +280,8 @@
 				74A3EFCE21F99BC000950BF8 /* NSArray+ZXDataConvert.m */,
 				74A3EFDF21F9B35700950BF8 /* ZXDataConvert.h */,
 				74A3EFE021F9B35700950BF8 /* ZXDataConvert.m */,
+				74E3D9CB255FE02F00C23F9C /* ZXDataConvertConfig.h */,
+				74E3D9CC255FE02F00C23F9C /* ZXDataConvertConfig.m */,
 			);
 			path = ZXDataConvert;
 			sourceTree = "<group>";
@@ -475,6 +480,7 @@
 				7454330D21F5C5080032B63B /* NSObject+ZXToModel.m in Sources */,
 				74A3EFD821F9A25A00950BF8 /* Bird.m in Sources */,
 				7454333221F708220032B63B /* NSString+ZXRegular.m in Sources */,
+				74E3D9CD255FE02F00C23F9C /* ZXDataConvertConfig.m in Sources */,
 				744C3C8C21FEDBF00040408A /* NSObject+ZXDataConvertRule.m in Sources */,
 				7454332021F6EA0A0032B63B /* ZXDecimalNumberTool.m in Sources */,
 				744C3C9821FEF92D0040408A /* ZXDataStoreSQlite.m in Sources */,

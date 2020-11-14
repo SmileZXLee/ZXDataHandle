@@ -96,11 +96,6 @@
                 }
                 [modelObj zx_objSaftySetValue:subMuArr forKey:proName];
             }else{
-                if([value isKindOfClass:[NSString class]]){
-                    if([value isEqualToString:@"96.6"]){
-                        NSLog(@"96.6");
-                    }
-                }
                 if(dataType == DataTypeNormalObj || dataType == DataTypeStr){
                     if([proType hasPrefix:@"T@\"NSNumber\""]){
                         if(dataType == DataTypeStr && [ZXDataType isNumberType:value]){
@@ -112,9 +107,7 @@
                         }
                         
                     }else if([proType hasPrefix:@"T@"]){
-                        if([proType hasPrefix:@"T@\"NSString\""]){
-                            value = [ZXDataConvert handleValueToMatchModelPropertyTypeWithValue:value type:proType];
-                        }
+                        value = [ZXDataConvert handleValueToMatchModelPropertyTypeWithValue:value type:proType];
                         [modelObj zx_objSaftySetValue:value forKey:proName];
                     }else{
                         value = [ZXDecimalNumberTool zx_decimalNumber:[value doubleValue]];
@@ -175,6 +168,19 @@
         }
     }
     return resObj;
+}
+
+
++(NSDictionary *)zx_inArrModelName{
+    return nil;
+}
+
++(NSDictionary *)zx_replaceProName{
+    return nil;
+}
+
++(NSString *)zx_replaceProName121:(NSString *)proName{
+    return nil;
 }
 
 @end

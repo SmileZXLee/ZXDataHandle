@@ -131,6 +131,7 @@
         i++;
     }
     cat.girls = girlsArr;
+    cat.imgUrls = @[@"http://manycar.oss-cn-shanghai.aliyuncs.com/imgage/3219120200927193503.png",@"http://manycar.oss-cn-shanghai.aliyuncs.com/imgage/3219120200927193503.png"];
     NSString *resJson = [cat zx_toJsonStr];
     NSLog(@"resJson--%@",resJson);
     

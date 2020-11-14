@@ -12,4 +12,5 @@
 @property (nonatomic, copy) NSString *sex;
 @property (nonatomic, strong) NSNumber *soldMoney;
 @property (nonatomic, strong) NSMutableArray *girls;
+@property (nonatomic, strong) NSMutableArray *imgUrls;
 @end

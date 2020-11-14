@@ -57,7 +57,11 @@
                 NSArray *valueArr = (NSArray *)value;
                 NSMutableArray *resValueArr = [NSMutableArray array];
                 for (id subObj in valueArr) {
-                    id resSubObj = [subObj zx_toDic];
+                    DataType dataType = [ZXDataType zx_dataType:subObj];
+                    id resSubObj = subObj;
+                    if(!(dataType == DataTypeStr || [value isKindOfClass:[NSNumber class]])){
+                        resSubObj = [subObj zx_toDic];
+                    }
                     [resValueArr addObject:resSubObj];
                 }
                 value = [resValueArr mutableCopy];

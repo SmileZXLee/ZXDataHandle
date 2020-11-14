@@ -28,14 +28,8 @@
         id resValue = [ZXDataConvert shareInstance].zx_dataConvertSetterBlock(key,value,self);
         value = resValue;
     }
-    if(![value isKindOfClass:[NSNull class]] && value){
-        if([value isKindOfClass:[NSArray class]]){
-            if([value count]){
-                [self setValue:value forKey:key];
-            }
-        }else{
-            [self setValue:value forKey:key];
-        }
+    if(value && ![value isKindOfClass:[NSNull class]]){
+        [self setValue:value forKey:key];
     }
 }
 
