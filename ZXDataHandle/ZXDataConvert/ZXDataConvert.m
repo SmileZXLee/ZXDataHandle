@@ -94,31 +94,34 @@
     }
     if([proType hasPrefix:@"T@"]){
         NSRange typeRange = [proType rangeOfString:@"\".*?\"" options:NSRegularExpressionSearch];
-        NSString *resTypeStr = [proType substringWithRange:typeRange];
-        resTypeStr = [resTypeStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-        Class cls = NSClassFromString(resTypeStr);
-        if(cls && [value isKindOfClass:cls]){
-            return value;
-        }
-        switch (dataValueAutoConvertMode) {
-            case ZXDataValueAutoConvertModeEmpty:{
-                if(cls){
-                    return [cls new];
-                }
-                break;
-            }
-            case ZXDataValueAutoConvertModeNil:{
-                return nil;
-                break;
-            }
-            case ZXDataValueAutoConvertModeOrg:{
+        if(typeRange.location != NSNotFound){
+            NSString *resTypeStr = [proType substringWithRange:typeRange];
+            resTypeStr = [resTypeStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+            Class cls = NSClassFromString(resTypeStr);
+            if(cls && [value isKindOfClass:cls]){
                 return value;
-                break;
             }
-            default:
-                break;
+            switch (dataValueAutoConvertMode) {
+                case ZXDataValueAutoConvertModeEmpty:{
+                    if(cls){
+                        return [cls new];
+                    }
+                    break;
+                }
+                case ZXDataValueAutoConvertModeNil:{
+                    return nil;
+                    break;
+                }
+                case ZXDataValueAutoConvertModeOrg:{
+                    return value;
+                    break;
+                }
+                default:
+                    break;
+            }
+            return nil;
         }
-        return nil;
+        
     }
     if([value isKindOfClass:[NSString class]]){
         BOOL isNumberType = [ZXDataType isNumberType:value];
