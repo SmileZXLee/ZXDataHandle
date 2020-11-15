@@ -25,7 +25,6 @@
 }
 
 + (id)handleValueToMatchModelPropertyTypeWithValue:(id)value type:(NSString *)proType{
-    NSLog(@"proType--%@",proType);
     ZXDataValueAutoConvertMode dataValueAutoConvertMode = [ZXDataConvert shareInstance].zx_dataConvertConfig.zx_dataValueAutoConvertMode;
     if([proType hasPrefix:@"T@\"NSString\""]){
         if([value isKindOfClass:[NSString class]]){
@@ -94,8 +93,10 @@
         return nil;
     }
     if([proType hasPrefix:@"T@"]){
-        NSString *classNameStr = [[proType stringByReplacingOccurrencesOfString:@"T@\"" withString:@""]stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-        Class cls = NSClassFromString(classNameStr);
+        NSRange typeRange = [proType rangeOfString:@"\".*?\"" options:NSRegularExpressionSearch];
+        NSString *resTypeStr = [proType substringWithRange:typeRange];
+        resTypeStr = [resTypeStr stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        Class cls = NSClassFromString(resTypeStr);
         if(cls && [value isKindOfClass:cls]){
             return value;
         }
@@ -139,7 +140,7 @@
             }
         }
     }
-    return nil;
+    return value;
 }
 
 - (ZXDataConvertConfig *)zx_dataConvertConfig{

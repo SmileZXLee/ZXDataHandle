@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Test : NSObject
 @property (nonatomic, copy) NSString *msg;
-@property (nonatomic, copy) NSString *code;
+@property (nonatomic, assign) int code;
 @end
 
 NS_ASSUME_NONNULL_END
