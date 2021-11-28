@@ -14,10 +14,15 @@
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
--(NSData *)zx_arrToJSONData{
+-(NSString *)zx_arrToJsonStrWithOptions:(NSJSONWritingOptions)options{
+    NSData *jsonData = [self zx_arrToJSONDataWithOptions:options];
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+}
+
+-(NSData *)zx_arrToJSONDataWithOptions:(NSJSONWritingOptions)options{
     NSError *error = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
-                                                       options:NSJSONWritingPrettyPrinted
+                                                       options:options
                                                          error:&error];
     if ([jsonData length] > 0 && error == nil){
         return jsonData;
@@ -25,5 +30,9 @@
         ZXDataHandleLog(@"数组%@无法转化为Json字符串--error:%@",self,error);
         return nil;
     }
+}
+
+-(NSData *)zx_arrToJSONData{
+    return [self zx_arrToJSONDataWithOptions:NSJSONWritingPrettyPrinted];
 }
 @end

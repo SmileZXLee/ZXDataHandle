@@ -15,7 +15,8 @@
 #import "NSDictionary+ZXSafetySet.h"
 #import "NSString+ZXRegular.h"
 @implementation NSObject (ZXToJson)
--(NSString *)zx_toJsonStr{
+
+-(NSString *)zx_toJsonStrWithOptions:(NSJSONWritingOptions)options{
     NSString *resJsonStr = nil;
     if([self isKindOfClass:[NSData class]]){
         return [((NSData *)self) zx_dataToJsonStr];
@@ -34,14 +35,18 @@
                 [dicsArr addObject:subObj];
             }
         }
-        resJsonStr = [dicsArr zx_arrToJsonStr];
+        resJsonStr = [dicsArr zx_arrToJsonStrWithOptions:options];
     }else if(dataType == DataTypeStr){
         resJsonStr = (NSString *)self;
     }else{
         id resDic = [self zx_toDic];
-        resJsonStr = [resDic zx_dicToJsonStr];
+        resJsonStr = [resDic zx_dicToJsonStrWithOptions:options];
     }
     return resJsonStr;
+}
+
+-(NSString *)zx_toJsonStr{
+    return [self zx_toJsonStrWithOptions:NSJSONWritingPrettyPrinted];
 }
 
 -(NSString*)zx_kvStr{
@@ -73,18 +78,18 @@
     sumStr = sumStr.length ? [sumStr substringToIndex:sumStr.length - 1] : sumStr;
     return sumStr;
 }
--(NSData *)zx_toJsonData{
+-(NSData *)zx_toJsonDataWithOptions:(NSJSONWritingOptions)options{
     NSData *jsonData;
     if([self isKindOfClass:[NSData class]]){
         return (NSData *)self;
     }
     DataType dataType = [ZXDataType zx_dataType:self];
     if(dataType == DataTypeDic){
-        jsonData = [((NSDictionary *)self) zx_dicToJSONData];
+        jsonData = [((NSDictionary *)self) zx_dicToJSONDataWithOptions:options];
     }else if(dataType == DataTypeArr){
         id fObj = ((NSArray *)self).firstObject;
         if(fObj && [fObj isKindOfClass:[NSDictionary class]]){
-            jsonData = [((NSArray *)self) zx_arrToJSONData];
+            jsonData = [((NSArray *)self) zx_arrToJSONDataWithOptions:options];
         }else{
             jsonData = [[self zx_toJsonStr]dataUsingEncoding:NSUTF8StringEncoding];
         }
@@ -94,5 +99,8 @@
         jsonData = [[self zx_toJsonStr]dataUsingEncoding:NSUTF8StringEncoding];
     }
     return jsonData;
+}
+-(NSData *)zx_toJsonData{
+    return [self zx_toJsonDataWithOptions:NSJSONWritingPrettyPrinted];
 }
 @end
