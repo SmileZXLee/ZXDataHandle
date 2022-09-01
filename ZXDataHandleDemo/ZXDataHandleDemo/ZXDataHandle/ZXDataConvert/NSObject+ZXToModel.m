@@ -1,6 +1,6 @@
 //
 //  NSObject+ZXToModel.m
-//  ZXDataHandleDemo
+//  ZXDataHandle
 //
 //  Created by 李兆祥 on 2019/1/27.
 //  Copyright © 2019 李兆祥. All rights reserved.
@@ -21,7 +21,7 @@
 @implementation NSObject (ZXToModel)
 +(instancetype)zx_modelWithDic:(NSMutableDictionary *)dic{
     if([ZXDataType isFoudationClass:self]){
-        return nil;
+        return dic;
     }
     Class selfCalss = [self class];
     id modelObj = [[selfCalss alloc]init];
